@@ -94,7 +94,7 @@ The interface is inspired by classic arcade machines and uses:
 Clone the repository:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone [YOUR_REPOSITORY_URL](https://github.com/RicardoE7/advanced-counter)
 ```
 
 Navigate into the project:
