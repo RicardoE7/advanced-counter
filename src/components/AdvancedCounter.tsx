@@ -50,6 +50,11 @@ const AdvancedCounter = () => {
     setHistory((previousHistory) => [...previousHistory, newCount]);
   };
 
+  const reset = () => {
+    setCount(0);
+    setHistory([]);
+  };
+
   return (
     <main>
       <h1>Advanced Counter</h1>
@@ -58,6 +63,8 @@ const AdvancedCounter = () => {
       <h2>{count}</h2>
 
       <button onClick={decrement}>Decrement</button>
+
+      <button onClick={reset}>Reset</button>
 
       <button onClick={increment}>Increment</button>
 
