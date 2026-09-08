@@ -4,6 +4,7 @@ const AdvancedCounter = () => {
   const [count, setCount] = useState(0);
   const [history, setHistory] = useState<number[]>([0]);
   const [saveMessage, setSaveMessage] = useState("");
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
     setSaveMessage("Saving...");
@@ -37,14 +38,14 @@ const AdvancedCounter = () => {
   });
 
   const increment = () => {
-    const newCount = count + 1;
+    const newCount = count + step;
 
     setCount(newCount);
     setHistory((previousHistory) => [...previousHistory, newCount]);
   };
 
   const decrement = () => {
-    const newCount = count - 1;
+    const newCount = count - step;
 
     setCount(newCount);
     setHistory((previousHistory) => [...previousHistory, newCount]);
@@ -61,6 +62,17 @@ const AdvancedCounter = () => {
 
       <p>Current Count</p>
       <h2>{count}</h2>
+
+      <div>
+        <label htmlFor="step">Step Value: </label>
+
+        <input
+          id="step"
+          type="number"
+          value={step}
+          onChange={(event) => setStep(Number(event.target.value))}
+        />
+      </div>
 
       <button onClick={decrement}>Decrement</button>
 
