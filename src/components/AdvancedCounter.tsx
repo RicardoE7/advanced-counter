@@ -18,6 +18,24 @@ const AdvancedCounter = () => {
     };
   }, [count]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowUp") {
+        increment();
+      }
+
+      if (event.key === "ArrowDown") {
+        decrement();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  });
+
   const increment = () => {
     const newCount = count + 1;
 
