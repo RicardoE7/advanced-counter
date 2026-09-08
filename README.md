@@ -151,7 +151,3 @@ This project demonstrates:
 * Persisting data with `localStorage`
 * Building keyboard-accessible interactions
 * Creating a responsive interface with Tailwind CSS
-
-## 📜 License
-
-This project was created for educational purposes.
