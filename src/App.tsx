@@ -1,5 +1,7 @@
+import AdvancedCounter from './components/AdvancedCounter';
+
 function App() {
-  return <h1 className="text-4xl font-bold text-cyan-400">Advanced Counter</h1>;
+  return <AdvancedCounter />;
 }
 
 export default App;
