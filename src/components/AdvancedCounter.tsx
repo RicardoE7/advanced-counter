@@ -1,28 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AdvancedCounter = () => {
   const [count, setCount] = useState(0);
-const [history, setHistory] = useState<number[]>([0]);
+  const [history, setHistory] = useState<number[]>([0]);
+  const [saveMessage, setSaveMessage] = useState("");
 
-const increment = () => {
-  const newCount = count + 1;
+  useEffect(() => {
+    setSaveMessage("Saving...");
 
-  setCount(newCount);
-  setHistory((previousHistory) => [
-    ...previousHistory,
-    newCount,
-  ]);
-};
+    const saveTimer = setTimeout(() => {
+      localStorage.setItem("counter", count.toString());
+      setSaveMessage("Changes saved.");
+    }, 500);
 
-const decrement = () => {
-  const newCount = count - 1;
+    return () => {
+      clearTimeout(saveTimer);
+    };
+  }, [count]);
 
-  setCount(newCount);
-  setHistory((previousHistory) => [
-    ...previousHistory,
-    newCount,
-  ]);
-};
+  const increment = () => {
+    const newCount = count + 1;
+
+    setCount(newCount);
+    setHistory((previousHistory) => [...previousHistory, newCount]);
+  };
+
+  const decrement = () => {
+    const newCount = count - 1;
+
+    setCount(newCount);
+    setHistory((previousHistory) => [...previousHistory, newCount]);
+  };
 
   return (
     <main>
@@ -39,6 +47,8 @@ const decrement = () => {
         <h3>Count History</h3>
         <p>{history.join(", ")}</p>
       </section>
+
+      <p>{saveMessage}</p>
     </main>
   );
 };
